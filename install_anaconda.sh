@@ -25,5 +25,8 @@ source ~/.bashrc
 # Удаление установочного скрипта
 rm ~/anaconda.sh
 
+# Применение изменений
+source ~/.bashrc
+
 # Проверка установки
 conda --version
