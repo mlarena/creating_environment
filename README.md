@@ -11,6 +11,7 @@
 - install_dotnet9  
 - postgres + geo  
 - Markdown Viewer  
+- jupyter
 
 
 # Скрипты администрирования
@@ -23,3 +24,7 @@ nginx список сайтов и на каких портах крутятся
 postgres вывод информации конфигурации, версия, список баз данных их размер, пользователей бд  
 psg_restore_db_dump.sh
 system_info.sh
+
+# Сделать скрипты исполняемыми
+chmod +x make_scripts_executable.sh
+./make_scripts_executable.sh
