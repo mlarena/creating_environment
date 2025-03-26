@@ -22,5 +22,3 @@ sudo apt install -y code
 # Удаление временных файлов
 rm packages.microsoft.gpg
 
-# Проверка установки
-code --version
