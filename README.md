@@ -1,8 +1,6 @@
 ## Cоздание окружения разработчика
 
 # Скрипты для установки
-- git   
-- Markdown Viewer  
 - Anaconda  
 - vscode  
 - docker  
@@ -12,6 +10,7 @@
 - install_dependencies  
 - install_dotnet9  
 - postgres + geo  
+- Markdown Viewer  
 
 
 # Скрипты администрирования
