@@ -1,26 +1,24 @@
 #!/bin/bash
 
+# Добавляем репозиторий dotnet
+sudo add-apt-repository ppa:dotnet/backports
+
 # Обновляем список пакетов
-sudo apt update
+sudo apt-get update
 
-# Устанавливаем зависимости
-sudo apt install -y wget apt-transport-https
+# Устанавливаем .NET SDK 9.0
+sudo apt-get install -y dotnet-sdk-9.0
 
-# Добавляем ключ репозитория Microsoft
-wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
+# Обновляем список пакетов
+sudo apt-get update
 
-# Обновляем список пакетов после добавления репозитория
-sudo apt update
+# Устанавливаем ASP.NET Core Runtime 9.0
+sudo apt-get install -y aspnetcore-runtime-9.0
 
-# Устанавливаем .NET SDK 9
-sudo apt install -y dotnet-sdk-9
+# Устанавливаем .NET Runtime 9.0
+sudo apt-get install -y dotnet-runtime-9.0
 
-# Устанавливаем ASP.NET Core Runtime 9
-sudo apt install -y aspnetcore-runtime-9
-
-# Устанавливаем .NET Runtime 9
-sudo apt install -y dotnet-runtime-9
-
-# Проверяем установку
+# Выводим версию установленного .NET SDK
 dotnet --version
+
+echo "Установка завершена!"
