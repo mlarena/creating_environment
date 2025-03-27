@@ -6,6 +6,10 @@ sudo apt update
 # Установка PostgreSQL и PostGIS
 sudo apt install -y postgresql postgresql-contrib postgis
 
+# Запуск PostgreSQL сервиса
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+
 # Настройка пароля для пользователя postgres
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'toor';"
 
