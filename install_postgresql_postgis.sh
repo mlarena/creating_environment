@@ -16,7 +16,7 @@ sudo -u postgres createdb -E UTF8 template_postgis
 sudo -u postgres psql -d template_postgis -c "CREATE EXTENSION postgis;"
 
 # Проверка установки PostgreSQL
-sudo -u postgres psql --version
+psql --version
 
 # Проверка установки PostGIS
-sudo -u postgres psql -d template_postgis -c "SELECT postgis_full_version();"
+psql -d template_postgis -c "SELECT postgis_full_version();"
