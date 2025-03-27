@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Функция для проверки наличия блокировки
+check_lock() {
+    if lsof /var/lib/dpkg/lock-frontend >/dev/null 2>&1; then
+        echo "Файл блокировки используется другим процессом. Пожалуйста, подождите и повторите попытку позже."
+        exit 1
+    fi
+}
+
+# Проверяем наличие блокировки перед началом установки
+check_lock
+
 # Добавляем репозиторий dotnet
 sudo add-apt-repository -y ppa:dotnet/backports
 if [ $? -ne 0 ]; then
