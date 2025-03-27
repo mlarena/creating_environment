@@ -12,8 +12,8 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 # Обновление списка пакетов после добавления репозитория
 sudo apt update
 
-# Установка PostgreSQL 13 и PostGIS
-sudo apt install -y postgresql-13 postgresql-contrib-13 postgis
+# Установка последней версии PostgreSQL и PostGIS
+sudo apt install -y postgresql postgresql-contrib postgis
 
 # Запуск PostgreSQL сервиса
 sudo systemctl start postgresql
@@ -29,7 +29,9 @@ sudo -u postgres createdb -E UTF8 template_postgis
 sudo -u postgres psql -d template_postgis -c "CREATE EXTENSION postgis;"
 
 # Проверка установки PostgreSQL
-psql --version
+psql_version=$(psql --version | head -n 1)
+echo "Установленная версия PostgreSQL: $psql_version"
 
 # Проверка установки PostGIS
-sudo -u postgres psql -d template_postgis -c "SELECT postgis_full_version();"
+postgis_version=$(sudo -u postgres psql -d template_postgis -tA -c "SELECT postgis_full_version();")
+echo "Версия PostGIS: $postgis_version"
