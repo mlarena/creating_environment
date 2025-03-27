@@ -1,10 +1,19 @@
 #!/bin/bash
 
-# Обновление списка пакетов
+# Установка необходимых пакетов для добавления репозитория
+sudo apt install -y gnupg gnupg2 gnupg1
+
+# Добавление репозитория PostgreSQL
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+# Импорт ключа GPG для репозитория PostgreSQL
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+# Обновление списка пакетов после добавления репозитория
 sudo apt update
 
-# Установка PostgreSQL и PostGIS
-sudo apt install -y postgresql postgresql-contrib postgis
+# Установка PostgreSQL 13 и PostGIS
+sudo apt install -y postgresql-13 postgresql-contrib-13 postgis
 
 # Запуск PostgreSQL сервиса
 sudo systemctl start postgresql
@@ -23,4 +32,4 @@ sudo -u postgres psql -d template_postgis -c "CREATE EXTENSION postgis;"
 psql --version
 
 # Проверка установки PostGIS
-psql -d template_postgis -c "SELECT postgis_full_version();"
+sudo -u postgres psql -d template_postgis -c "SELECT postgis_full_version();"
